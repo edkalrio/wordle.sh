@@ -10659,3 +10659,5 @@ dictionary=(
 	"zymes"
 	"zymic"
 )
+
+export dictionary

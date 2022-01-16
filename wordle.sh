@@ -2,7 +2,7 @@
 
 source dictionary.sh
 source solutions.sh
-set +x
+
 select_solution(){
 	today=$(date +%s)
 	wordle_epoch=$(date +%s -d 20210619)
@@ -13,11 +13,10 @@ solution_index=$(select_solution)
 solution=$(echo "${solutions[solution_index]}")
 
 check_dictionary(){
-	if [[ "${dictionary[*]}" =~ "${1}" || "${solutions[*]}" =~ "${1}" ]]; then
+	if [[ "${dictionary[*]}" =~ ${1} || "${solutions[*]}" =~ ${1} ]]; then
 		echo "true"
 	else
 		echo "false"
-	# [[ "${dictionary[*]}" =~ "${1}" ]] && echo 'true' || echo 'false'
 	fi
 }
 
@@ -27,7 +26,7 @@ check_solution(){
 	for ((char=0; char<5; char++)); do
 		if [[ "${solution_chars[i]}" == "${candidate[char]}" ]]; then
 			printf '\033[0;32m%s\033[0m' "${candidate[char]:0:1}"
-		elif [[ "${solution_chars[*]}" =~ "${candidate[char]}" ]]; then
+		elif [[ "${solution_chars[*]}" =~ ${candidate[char]} ]]; then
 			printf '\033[0;33m%s\033[0m' "${candidate[char]:0:1}"
 		else
 			printf '%s' "${candidate[char]:0:1}"
@@ -49,7 +48,7 @@ for ((try=0; try<6; try++)); do
 			check_solution "${response}" "${solution}"
 			echo
 		else
-			echo "no"
+			echo -ne '\033[1A'
 		fi
 	else read -r response
 	fi
