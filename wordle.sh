@@ -24,7 +24,7 @@ check_solution(){
 	mapfile candidate -t < <(echo "${1}" | grep -o . )
 	mapfile solution_chars -t < <(echo "${2}" | grep -o . )
 	for ((char=0; char<5; char++)); do
-		if [[ "${solution_chars[i]}" == "${candidate[char]}" ]]; then
+		if [[ "${solution_chars[char]}" == "${candidate[char]}" ]]; then
 			printf '\033[0;32m%s\033[0m' "${candidate[char]:0:1}"
 		elif [[ "${solution_chars[*]}" =~ ${candidate[char]} ]]; then
 			printf '\033[0;33m%s\033[0m' "${candidate[char]:0:1}"
