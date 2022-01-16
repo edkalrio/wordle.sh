@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+# SPOILER ALERT!!
+
 solutions=(
 	"cigar"
 	"rebut"
