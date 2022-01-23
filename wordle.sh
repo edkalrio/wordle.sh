@@ -62,3 +62,5 @@ for ((try=0; try<6; try++)); do
 		echo -ne '\033[1A\033[2K' 
 	fi
 done
+
+echo "${solution}"
